@@ -18,10 +18,12 @@ buildscript {
         classpath('com.android.tools.build:gradle')
         classpath('com.facebook.react:react-native-gradle-plugin')
         classpath('org.jetbrains.kotlin:kotlin-gradle-plugin')
+        classpath ('com.google.gms:google-services:4.4.2')
     }
 }
 
 apply plugin: "com.facebook.react.rootproject"
+apply plugin: 'com.google.gms.google-services'
 
 allprojects {
     repositories {
@@ -38,4 +40,23 @@ allprojects {
         mavenCentral()
         maven { url 'https://www.jitpack.io' }
     }
+}
+
+project.ext {
+  set('react-native', [
+    versions: [
+      // Overriding Build/Android SDK Versions
+      android : [
+        minSdk    : 24, // 23+ if using auth module
+        targetSdk : 33,
+        compileSdk: 34,
+      ],
+
+      // Overriding Library SDK Versions
+      firebase: [
+        // Override Firebase SDK Version
+        bom           : "33.5.1"
+      ],
+    ],
+  ])
 }
