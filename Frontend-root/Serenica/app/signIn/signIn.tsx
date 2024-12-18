@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View, TextInput, Button, Text, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-const auth = getAuth();
+import auth from '@react-native-firebase/auth';
+
 
 const SignInScreen = () => {
   const [email, setEmail] = useState("");
@@ -21,8 +21,8 @@ const SignInScreen = () => {
       return;
     }
 
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
+    auth()
+    .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
@@ -59,7 +59,7 @@ const SignInScreen = () => {
       />
       <Text
         style={styles.link}
-        onPress={() => router.push("./sign-up")} // Navigate to Sign Up screen
+        onPress={() => router.push("../SignUp")} // Navigate to Sign Up screen
       >
         Don't have an account? Sign Up
       </Text>

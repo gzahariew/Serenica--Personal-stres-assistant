@@ -10,12 +10,14 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.georgizahar.Serenica"
+      "bundleIdentifier": "com.georgizahar.Serenica",
+      "googleServicesFile": "./ios/Serenica/"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#ffffff",
+        "googleServicesFile": "./android/app/google-services.json"
       },
       "package": "com.georgizahar.Serenica"
     },
@@ -28,6 +30,7 @@
       "expo-router",
       "@react-native-firebase/app",
       "expo-build-properties",
+      "@react-native-google-signin/google-signin",
       [
         "expo-splash-screen",
         {

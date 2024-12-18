@@ -1,36 +1,40 @@
 // /app/layout.tsx
 import React, { useEffect, useState } from 'react';
 import { Stack, useRouter } from 'expo-router';
-import { getAuth } from "firebase/auth";
-
-const auth = getAuth();
+import auth from '@react-native-firebase/auth';
 
 export default function RootLayout() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const router = useRouter();
+  const [user, setUser] = useState(null); // Track the authenticated user
+  const [loading, setLoading] = useState(true); // Track initialization/loading state
+  const router = useRouter(); // Expo Router for navigation
 
   useEffect(() => {
     // Listen for authentication state changes
-    const unsubscribe = auth.onAuthStateChanged((currentUser :any) => {
+    const unsubscribe = auth().onAuthStateChanged((currentUser :any) => {
       setUser(currentUser);
       setLoading(false);
 
       if (currentUser) {
-        router.replace('/home'); // Redirect to home if logged in
+        // Redirect to home if logged in
+        router.replace('/home');
       } else {
-        router.replace('./signIn'); // Redirect to sign-in if not logged in
+        // Redirect to sign-in page if not logged in
+        router.replace('/signIn/signIn');
       }
     });
 
-    // Clean up the listener on unmount
-    return () => unsubscribe();
+    // Clean up the listener on component unmount
+    return unsubscribe;
   }, []);
 
   if (loading) {
-    // Show a loading screen while checking auth
-    return null;
+    // Optionally, show a loading indicator while Firebase initializes
+    return null; // Placeholder for a spinner or splash screen
   }
 
-  return <Stack />;
+  return (
+    // Render the navigation stack provided by expo-router
+    <Stack />
+  );
 }
+

@@ -52,7 +52,7 @@ const SignUpScreen = () => {
       <Button title={loading ? 'Signing up...' : 'Sign Up'} onPress={handleSignUp} disabled={loading} />
       <Text
         style={styles.link}
-        onPress={() => router.push('./sign-in')} // Navigate to Sign In screen
+        onPress={() => router.push('./signIn/signIn')} // Navigate to Sign In screen
       >
         Already have an account? Sign In
       </Text>
