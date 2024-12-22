@@ -1,4 +1,5 @@
 import { Text, View } from "react-native";
+import UserProfileCheck from '../../components/UserProfileCheck'; 
 
 export default function Index() {
   return (
@@ -9,7 +10,11 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      
+      <UserProfileCheck />
+      
+      <Text>Edit home/index.tsx to edit this screen.</Text>
     </View>
   );
 }
+

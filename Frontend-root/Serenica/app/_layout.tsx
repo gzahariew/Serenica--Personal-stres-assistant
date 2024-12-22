@@ -16,7 +16,7 @@ export default function RootLayout() {
 
       if (currentUser) {
         // Redirect to home if logged in
-        router.replace('/home');
+        router.replace('./home');
       } else {
         // Redirect to sign-in page if not logged in
         router.replace('/signIn/signIn');
