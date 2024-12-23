@@ -41,7 +41,7 @@
     "metro-config": "^0.81.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-native": "0.76.3",
+    "react-native": "0.76.5",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-google-fit": "^0.21.0",
     "react-native-health": "^1.19.0",

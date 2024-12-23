@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
+import axios from 'axios';
+import { ActivityIndicator, View, Text } from 'react-native';
 import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
 
 const UserProfileCheck = () => {
   const router = useRouter();
@@ -12,37 +12,37 @@ const UserProfileCheck = () => {
   useEffect(() => {
     const checkUserProfile = async () => {
       try {
-        const user = auth().currentUser;
+        // Check if the current user is null
+        const currentUser = auth().currentUser;
+        
+        if (!currentUser) {
+          // If no user is signed in, redirect to signIn page
+          router.push('../app/signIn');
+          return;
+        }
 
-        if (user) {
-          const userDoc = await firestore()
-            .collection('users')
-            .doc(user.uid)
-            .get();
+        // Get the Firebase ID Token for current user
+        const idToken = await currentUser.getIdToken();
 
-          if (!userDoc.exists) {
-            console.log('No document found for the user');
-            // No document found for the user, redirect to setup page
-            router.push('/SetUp'); // Use router.push for navigation
+        if (idToken) {
+          const response = await axios.get('http://localhost:5000/userProfile', {
+            headers: {
+              Authorization: `Bearer ${idToken}`,
+            },
+          });
+
+          if (response.data.setupRequired) {
+            router.push('/SetUp'); // Redirect to SetUp if setup is required
           } else {
-            const userData :any= userDoc.data();
-            // Check if the setup is complete by checking specific fields
-            if (!userData.isProfileComplete) {
-              console.log('Profile is not complete, redirecting to setup');
-              router.push('../app/SetUp'); // If setup isn't complete, redirect to setup page
-            } else {
-              console.log('Profile is complete, redirecting to home');
-              router.push('/home'); // If profile is complete, redirect to home page
-            }
+            router.push('/home'); // Redirect to home if the setup is complete
           }
         } else {
-          console.log('User is not logged in');
-          // User is not logged in, redirect to login/signup page
-          router.push('../app/SetUp');
+          // If there’s no idToken, redirect to signIn page
+          router.push('../app/signIn');
         }
       } catch (err: any) {
-        console.error('Error checking profile:', err);
-        throw(`Error checking profile: ${err.message}`);
+        // Set error state to show in the UI
+        console.log(`Error checking profile: ${err.message}`);
       } finally {
         setLoading(false);
       }
@@ -67,4 +67,5 @@ const UserProfileCheck = () => {
 };
 
 export default UserProfileCheck;
+
 
