@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "834541026169",
+    "firebase_url": "https://serenica-ab3bf-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "serenica-ab3bf",
+    "storage_bucket": "serenica-ab3bf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834541026169:android:bc1b4f9fa269d1143f4da8",
+        "android_client_info": {
+          "package_name": "com.georgizahar.Serenica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834541026169-no4oon88cvnpr61a4ce0vhjdmfqc0np9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxMihhXUx8zf0gL4B83AErnDoC67P44rc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834541026169-no4oon88cvnpr61a4ce0vhjdmfqc0np9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "834541026169-ena1fr2kfbb7kc149mdlhgq37c3rv8jf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.georgizahar.Serenica"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
