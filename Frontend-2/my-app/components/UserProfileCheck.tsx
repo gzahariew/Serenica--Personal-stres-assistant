@@ -7,42 +7,28 @@ import auth from '@react-native-firebase/auth';
 const UserProfileCheck = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<any | null>(null);
 
   useEffect(() => {
     const checkUserProfile = async () => {
       try {
-        // Check if the current user is null
         const currentUser = auth().currentUser;
-        
+
         if (!currentUser) {
-          // If no user is signed in, redirect to signIn page
           router.push('../app/signIn');
           return;
         }
 
-        // Get the Firebase ID Token for current user
         const idToken = await currentUser.getIdToken();
 
-        if (idToken) {
-          const response = await axios.get('http://localhost:5000/userProfile', {
-            headers: {
-              Authorization: `Bearer ${idToken}`,
-            },
-          });
+        const response = await axios.get(`${process.env.API_BASE_URL}/userProfile`, {
+          headers: { Authorization: `Bearer ${idToken}` },
+        });
 
-          if (response.data.setupRequired) {
-            router.push('/SetUp'); // Redirect to SetUp if setup is required
-          } else {
-            router.push('/home'); // Redirect to home if the setup is complete
-          }
-        } else {
-          // If there’s no idToken, redirect to signIn page
-          router.push('../app/signIn');
-        }
-      } catch (err: any) {
-        // Set error state to show in the UI
-        console.log(`Error checking profile: ${err.message}`);
+        router.push(response.data.setupRequired ? '/SetUp' : '/');
+      } catch (err :any) {
+        console.error(`Error checking profile: ${err.message}`);
+        setError('An error occurred while checking your profile. Please try again.');
       } finally {
         setLoading(false);
       }
@@ -53,19 +39,24 @@ const UserProfileCheck = () => {
 
   if (loading) {
     return (
-      <View>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size="large" color="#0000ff" />
       </View>
     );
   }
 
   if (error) {
-    return <Text>{error}</Text>;
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={{ color: 'red' }}>{error}</Text>
+      </View>
+    );
   }
 
-  return null; // Return nothing, as the component does the redirection
+  return null; // No UI since redirection is handled
 };
 
 export default UserProfileCheck;
+
 
 
