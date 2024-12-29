@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'expo-router';
 import axios from 'axios';
-import { ActivityIndicator, View, Text } from 'react-native';
+import { ActivityIndicator, View, Text, Button } from 'react-native';
 import auth from '@react-native-firebase/auth';
+import { LoadingContext, ErrContext } from "../app/index";
+
 
 const UserProfileCheck = () => {
+  const { loading, stopLoading, startLoading } = useContext(LoadingContext);
+  const {error, setError} = useContext(ErrContext);
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<any | null>(null);
+  // const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const checkUserProfile = async () => {
@@ -15,40 +18,34 @@ const UserProfileCheck = () => {
         const currentUser = auth().currentUser;
 
         if (!currentUser) {
+          stopLoading(); // Stop loading if no user
           router.push('../app/signIn');
           return;
         }
 
         const idToken = await currentUser.getIdToken();
 
-        const response = await axios.get(`${process.env.API_BASE_URL}/userProfile`, {
+        const response = await axios.get(`${"API_BASE_URL"}/userProfile`, {
           headers: { Authorization: `Bearer ${idToken}` },
         });
 
         router.push(response.data.setupRequired ? '/SetUp' : '/');
-      } catch (err :any) {
+      } catch (err: any) {
         console.error(`Error checking profile: ${err.message}`);
         setError('An error occurred while checking your profile. Please try again.');
       } finally {
-        setLoading(false);
+        stopLoading(); // Stop loading after process finishes
       }
     };
 
     checkUserProfile();
-  }, [router]);
-
-  if (loading) {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color="#0000ff" />
-      </View>
-    );
-  }
+  }, [router, stopLoading]);
 
   if (error) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text style={{ color: 'red' }}>{error}</Text>
+        <Text style={{ color: 'red', marginBottom: 10 }}>{error}</Text>
+        <Button title="Retry" onPress={() => window.location.reload()} />
       </View>
     );
   }
@@ -57,6 +54,7 @@ const UserProfileCheck = () => {
 };
 
 export default UserProfileCheck;
+
 
 
 

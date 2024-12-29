@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import auth from '@react-native-firebase/auth';
+import {LoadingContext} from "../app/index"
 
 const IsUserSigned = () => {
+  const { loading, startLoading, stopLoading } = useContext(LoadingContext);
+
   const [initializing, setInitializing] = useState(true); // Block rendering until Firebase connects
   const [user, setUser] = useState(null);
   const router = useRouter();
@@ -12,20 +15,11 @@ const IsUserSigned = () => {
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged((currentUser:any) => {
       setUser(currentUser);
-      if (initializing) setInitializing(false);
+      if (loading) stopLoading();
     });
 
     return subscriber; // Unsubscribe on unmount
-  }, [initializing]);
-
-  if (initializing) {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color="#0000ff" />
-        <Text>Checking authentication...</Text>
-      </View>
-    );
-  }
+  }, [loading]);
 
   // Redirect logic
 
