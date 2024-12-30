@@ -3,16 +3,17 @@ import { useRouter } from 'expo-router';
 import axios from 'axios';
 import { ActivityIndicator, View, Text, Button } from 'react-native';
 import auth from '@react-native-firebase/auth';
-import { LoadingContext, ErrContext } from "../app/index";
+import {  ErrContext } from "@/contexts/ErrContext";
+import { LoadingContext} from "@/contexts/LoadingContext"
 
 
 const UserProfileCheck = () => {
   const { loading, stopLoading, startLoading } = useContext(LoadingContext);
   const {error, setError} = useContext(ErrContext);
   const router = useRouter();
-  // const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    startLoading();
     const checkUserProfile = async () => {
       try {
         const currentUser = auth().currentUser;
@@ -23,9 +24,16 @@ const UserProfileCheck = () => {
           return;
         }
 
-        const idToken = await currentUser.getIdToken();
+        currentUser.getIdToken(true).then(function(idToken) {
+          // Send token to your backend via HTTPS
+          // ...
+        }).catch(function(error) {
+          // Handle error
+        });
 
-        const response = await axios.get(`${"API_BASE_URL"}/userProfile`, {
+        const idToken = await currentUser.getIdToken(true);
+
+        const response = await axios.get(`${"http://localhost:5000"}/userProfile`, {
           headers: { Authorization: `Bearer ${idToken}` },
         });
 
