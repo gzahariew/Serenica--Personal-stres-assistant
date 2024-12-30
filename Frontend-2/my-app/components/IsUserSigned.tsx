@@ -1,35 +1,41 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
-import { useRouter } from 'expo-router';
-import auth from '@react-native-firebase/auth';
-import {LoadingContext} from "../app/index"
+import React, { useState, useEffect, useContext } from "react";
+import { useRouter } from "expo-router";
+import auth from "@react-native-firebase/auth";
+import { LoadingContext } from "@/contexts/LoadingContext";
 
 const IsUserSigned = () => {
   const { loading, startLoading, stopLoading } = useContext(LoadingContext);
-
-  const [initializing, setInitializing] = useState(true); // Block rendering until Firebase connects
   const [user, setUser] = useState(null);
+  const [isMounted, setIsMounted] = useState(false); // Track mounting status
   const router = useRouter();
 
-  // Handle user state changes
   useEffect(() => {
-    const subscriber = auth().onAuthStateChanged((currentUser:any) => {
+    startLoading();
+
+    const subscriber = auth().onAuthStateChanged((currentUser: any) => {
       setUser(currentUser);
-      if (loading) stopLoading();
+      stopLoading();
     });
 
-    return subscriber; // Unsubscribe on unmount
-  }, [loading]);
+    return () => subscriber(); // Cleanup on unmount
+  }, [startLoading, stopLoading]);
 
-  // Redirect logic
+  useEffect(() => {
+    if (!isMounted) return;
 
-    if (!user) {
-      router.replace('/signIn/signIn'); // Redirect to Home if authenticated
-    } 
+    if (!loading && !user) {
+      router.replace("/signIn/signIn"); // Navigate only if mounted
+    }
+  }, [isMounted, loading, user, router]);
 
+  useEffect(() => {
+    setIsMounted(true); // Ensure this runs after the component is mounted
+    return () => setIsMounted(false); // Cleanup on unmount
+  }, []);
 
-  // While redirection is happening, return an empty view
-  return null;
+  return null; // Render nothing while checking auth state
 };
 
 export default IsUserSigned;
+
+
