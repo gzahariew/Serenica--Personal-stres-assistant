@@ -21,7 +21,6 @@ app.get('/userProfile', async (req, res) => {
     if (!idToken) {
       return res.status(401).json({ error: 'Unauthorized' });
     }
-    console.log(idToken);
 
     // Verify the Firebase ID Token
     const decodedToken = await getAuth().verifyIdToken(idToken);
