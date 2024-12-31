@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'expo-router';
 import axios from 'axios';
-import { ActivityIndicator, View, Text, Button } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {  ErrContext } from "@/contexts/ErrContext";
 import { LoadingContext} from "@/contexts/LoadingContext"
+import API_BASE_URL from "@/config/apiConfig";
 
 
 const UserProfileCheck = () => {
@@ -24,16 +25,9 @@ const UserProfileCheck = () => {
           return;
         }
 
-        currentUser.getIdToken(true).then(function(idToken) {
-          // Send token to your backend via HTTPS
-          // ...
-        }).catch(function(error) {
-          // Handle error
-        });
-
         const idToken = await currentUser.getIdToken(true);
 
-        const response = await axios.get(`${"http://localhost:5000"}/userProfile`, {
+        const response = await axios.get(`${API_BASE_URL}/userProfile`, {
           headers: { Authorization: `Bearer ${idToken}` },
         });
 
