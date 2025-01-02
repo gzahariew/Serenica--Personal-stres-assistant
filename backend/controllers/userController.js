@@ -1,21 +1,7 @@
-import express from 'express';
-import { initializeApp, applicationDefault, cert } from 'firebase-admin/app';
-import { getAuth } from 'firebase-admin/auth';
-import { getFirestore } from 'firebase-admin/firestore';
+// /controllers/userController.js
+import { db, firebaseAuth } from '../config/firebaseAdmin.js';
 
-// Initialize Firebase Admin
-initializeApp({
-  credential: applicationDefault(),
-});
-
-const db = getFirestore();
-const app = express();
-const port = process.env.PORT || 5000;
-
-app.use(express.json());
-
-// Route to check user profile
-app.get('/userProfile', async (req, res) => {
+export const getUserProfile = async (req, res) => {
   try {
     const idToken = req.headers.authorization?.split('Bearer ')[1];
     if (!idToken) {
@@ -23,7 +9,7 @@ app.get('/userProfile', async (req, res) => {
     }
 
     // Verify the Firebase ID Token
-    const decodedToken = await getAuth().verifyIdToken(idToken);
+    const decodedToken = await firebaseAuth.verifyIdToken(idToken);
 
     if (decodedToken) {
       const userId = decodedToken.uid;
@@ -44,10 +30,4 @@ app.get('/userProfile', async (req, res) => {
     console.error('Error verifying token or accessing Firestore:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
-
-
+};

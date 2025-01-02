@@ -10,11 +10,13 @@ import API_BASE_URL from "@/config/apiConfig";
 
 const UserProfileCheck = () => {
   const { loading, stopLoading, startLoading } = useContext(LoadingContext);
+  const [trigger, setTrigger] = useState(false);
   const {error, setError} = useContext(ErrContext);
   const router = useRouter();
 
   useEffect(() => {
     startLoading();
+    setTrigger(false)
     const checkUserProfile = async () => {
       try {
         const currentUser = auth().currentUser;
@@ -41,13 +43,13 @@ const UserProfileCheck = () => {
     };
 
     checkUserProfile();
-  }, [router, stopLoading]);
+  }, [router, stopLoading, trigger]);
 
   if (error) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text style={{ color: 'red', marginBottom: 10 }}>{error}</Text>
-        <Button title="Retry" onPress={() => window.location.reload()} />
+        <Button title="Retry" onPress={() => (setTrigger(true))} />
       </View>
     );
   }
