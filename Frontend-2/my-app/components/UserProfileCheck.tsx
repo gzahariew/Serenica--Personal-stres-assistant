@@ -29,7 +29,7 @@ const UserProfileCheck = () => {
 
         const idToken = await currentUser.getIdToken(true);
 
-        const response = await axios.get(`${API_BASE_URL}/userProfile`, {
+        const response = await axios.get(`${API_BASE_URL}/users/userProfile`, {
           headers: { Authorization: `Bearer ${idToken}` },
         });
 
