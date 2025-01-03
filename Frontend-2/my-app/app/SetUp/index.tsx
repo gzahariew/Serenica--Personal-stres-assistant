@@ -20,7 +20,7 @@ const SetupPage = () => {
     socialInteraction: false,
     other: false,
   });
-  const combinedState = { ...formData, ...preferences };
+  const combinedState = { ...formData, preferences: preferences };
 
   const handleCheckboxChange = (field: any, value: any) => {
     setPreferences((prevPreferences) => ({
@@ -71,17 +71,17 @@ const SetupPage = () => {
       <TextInput
         value={formData.height.toString()}
         keyboardType="numeric"
-        onChangeText={(text) => handleNumericInputChange("name", text)}
+        onChangeText={(text) => handleNumericInputChange("height", text)}
         placeholder="Enter your height"
       />
       <TextInput
         value={formData.weight.toString()}
-        onChangeText={(text) => handleNumericInputChange("name", text)}
+        onChangeText={(text) => handleNumericInputChange("weight", text)}
         placeholder="Enter your weight"
       />
       <TextInput
         value={formData.gender}
-        onChangeText={(text) => handleInputChangeText("name", text)}
+        onChangeText={(text) => handleInputChangeText("gender", text)}
         placeholder="Enter your gender"
       />
       <Text>Exercise</Text>
@@ -125,7 +125,7 @@ const SetupPage = () => {
 
       <Checkbox
         value={preferences.activity}
-        onValueChange={(newValue) => handleCheckboxChange("exercise", newValue)}
+        onValueChange={(newValue) => handleCheckboxChange("activity", newValue)}
       />
       <Text>Walk</Text>
 
@@ -142,13 +142,11 @@ const SetupPage = () => {
           handleCheckboxChange("socialInteraction", newValue)
         }
       />
-
+      <Text>Other</Text>
       <Checkbox
         value={preferences.other}
-        onValueChange={(newValue) => handleCheckboxChange("journal", newValue)}
+        onValueChange={(newValue) => handleCheckboxChange("other", newValue)}
       />
-
-      <Text>Progressive Muscle Relaxation</Text>
 
       {/* Submit button */}
       {/* <Button title="Submit" onPress={handleSubmit} /> */}

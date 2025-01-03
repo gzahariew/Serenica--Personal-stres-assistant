@@ -16,7 +16,7 @@ export const LoadingContext = createContext<LoadingContextType>({
 
 // The provider component
 export const LoadingContextProvider = ({ children }: { children: ReactNode }) => {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   // Functions to start and stop loading
   const startLoading = () => setLoading(true);
