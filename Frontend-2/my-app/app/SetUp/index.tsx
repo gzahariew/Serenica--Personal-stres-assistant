@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, Text, Button, ScrollView, TextInput } from "react-native";
 import Checkbox from "expo-checkbox";
+import apiClient from "@/instances/authInstance";
+import { LoadingContext } from "@/contexts/LoadingContext";
+import { useRouter } from "expo-router";
 
 const SetupPage = () => {
+  const { loading, stopLoading, startLoading } = useContext(LoadingContext);
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     name: "",
     age: 0,
@@ -20,7 +26,28 @@ const SetupPage = () => {
     socialInteraction: false,
     other: false,
   });
-  const combinedState = { ...formData, preferences: preferences };
+
+  const handleCreateProfile = async () => {
+    startLoading();
+    const combinedState = { ...formData, preferences: preferences,};
+    
+    try {
+      const response = await apiClient.post(
+        "/users/userSetProfile",
+        combinedState
+      );
+
+      if (response.status === 200) {
+        console.log("Profile created successfully:", response.data);
+        router.push("/");
+      }
+    } catch (error) {
+      console.error("Error creating profile:", error);
+      // Handle errors (e.g., show an error message or retry logic)
+    } finally {
+      stopLoading();
+    }
+  };
 
   const handleCheckboxChange = (field: any, value: any) => {
     setPreferences((prevPreferences) => ({
@@ -66,7 +93,7 @@ const SetupPage = () => {
       <TextInput
         value={formData.age.toString()}
         onChangeText={(text) => handleNumericInputChange("age", text)}
-        placeholder="Enter your name"
+        placeholder="Enter your age"
       />
       <TextInput
         value={formData.height.toString()}
@@ -97,7 +124,7 @@ const SetupPage = () => {
 
       <TextInput
         value={formData.sleep}
-        onChangeText={(text) => handleInputChangeText("name", text)}
+        onChangeText={(text) => handleInputChangeText("sleep", text)}
         placeholder="How is your sleep"
       />
 
@@ -149,7 +176,7 @@ const SetupPage = () => {
       />
 
       {/* Submit button */}
-      {/* <Button title="Submit" onPress={handleSubmit} /> */}
+      <Button title="Submit" onPress={handleCreateProfile} />
     </ScrollView>
   );
 };
