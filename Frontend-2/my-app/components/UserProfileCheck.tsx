@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'expo-router';
-import axios from 'axios';
 import { View, Text, Button } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {  ErrContext } from "@/contexts/ErrContext";
 import { LoadingContext} from "@/contexts/LoadingContext"
-import API_BASE_URL from "@/config/apiConfig";
+import apiClient from '@/instances/authInstance';
 
 
 const UserProfileCheck = () => {
@@ -27,11 +26,7 @@ const UserProfileCheck = () => {
           return;
         }
 
-        const idToken = await currentUser.getIdToken(true);
-
-        const response = await axios.get(`${API_BASE_URL}/users/userProfile`, {
-          headers: { Authorization: `Bearer ${idToken}` },
-        });
+        const response = await apiClient.get('/users/userProfile'); 
 
         router.push(response.data.setupRequired ? '/SetUp' : '/');
       } catch (err: any) {
