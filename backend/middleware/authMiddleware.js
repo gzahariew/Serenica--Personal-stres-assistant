@@ -13,6 +13,7 @@ export const authenticateUser = async (req, res, next) => {
     if (decodedToken) {
       req.user = decodedToken; // Attach the decoded token to the request object
       next(); // Pass control to the next handler
+      console.log("User Checked")
     } else {
       return res.status(401).json({ error: 'Unauthorized' });
     }
