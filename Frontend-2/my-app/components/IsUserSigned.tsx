@@ -18,7 +18,7 @@ const IsUserSigned = () => {
     });
 
     return () => subscriber(); // Cleanup on unmount
-  }, [startLoading, stopLoading]);
+  }, []);
 
   useEffect(() => {
     if (!isMounted) return;
@@ -26,7 +26,7 @@ const IsUserSigned = () => {
     if (!loading && !user) {
       router.replace("/signIn/signIn"); // Navigate only if mounted
     }
-  }, [isMounted, loading, user, router]);
+  }, []);
 
   useEffect(() => {
     setIsMounted(true); // Ensure this runs after the component is mounted
