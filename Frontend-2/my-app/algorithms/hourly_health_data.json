@@ -1,0 +1,1112 @@
+{
+  "2024-12-04 17:00": {
+    "heart_rate_median": 114.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-04 18:00": {
+    "heart_rate_median": 86.0,
+    "hrv_median": 18.4378,
+    "respiratory_rate_median": null
+  },
+  "2024-12-04 19:00": {
+    "heart_rate_median": 71.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-04 20:00": {
+    "heart_rate_median": 70.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-04 21:00": {
+    "heart_rate_median": 72.0,
+    "hrv_median": 33.8976,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 07:00": {
+    "heart_rate_median": 106.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 08:00": {
+    "heart_rate_median": 80.0,
+    "hrv_median": 69.5267,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 09:00": {
+    "heart_rate_median": 91.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 10:00": {
+    "heart_rate_median": 131.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 11:00": {
+    "heart_rate_median": 110.0,
+    "hrv_median": 24.3995,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 12:00": {
+    "heart_rate_median": 95.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 13:00": {
+    "heart_rate_median": 92.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 14:00": {
+    "heart_rate_median": 100.5,
+    "hrv_median": 33.2496,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 15:00": {
+    "heart_rate_median": 96.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 16:00": {
+    "heart_rate_median": 133.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 17:00": {
+    "heart_rate_median": 114.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 18:00": {
+    "heart_rate_median": 88.5,
+    "hrv_median": 25.2361,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 19:00": {
+    "heart_rate_median": 85.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 20:00": {
+    "heart_rate_median": 76.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 21:00": {
+    "heart_rate_median": 71.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-05 22:00": {
+    "heart_rate_median": 83.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-06 08:00": {
+    "heart_rate_median": 87.0,
+    "hrv_median": 38.4227,
+    "respiratory_rate_median": null
+  },
+  "2024-12-06 09:00": {
+    "heart_rate_median": 132.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-06 10:00": {
+    "heart_rate_median": 89.0,
+    "hrv_median": 56.8112,
+    "respiratory_rate_median": null
+  },
+  "2024-12-06 11:00": {
+    "heart_rate_median": 93.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-06 12:00": {
+    "heart_rate_median": 103.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-06 13:00": {
+    "heart_rate_median": 99.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-06 14:00": {
+    "heart_rate_median": 105.0,
+    "hrv_median": 26.0876,
+    "respiratory_rate_median": null
+  },
+  "2024-12-06 15:00": {
+    "heart_rate_median": 73.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-06 16:00": {
+    "heart_rate_median": 77.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-06 17:00": {
+    "heart_rate_median": 79.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-06 18:00": {
+    "heart_rate_median": 80.0,
+    "hrv_median": 34.9331,
+    "respiratory_rate_median": null
+  },
+  "2024-12-06 19:00": {
+    "heart_rate_median": 72.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-06 20:00": {
+    "heart_rate_median": 67.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-06 21:00": {
+    "heart_rate_median": 69.0,
+    "hrv_median": null,
+    "respiratory_rate_median": 20.0
+  },
+  "2024-12-06 22:00": {
+    "heart_rate_median": 68.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-07 08:00": {
+    "heart_rate_median": 86.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-07 11:00": {
+    "heart_rate_median": 93.5,
+    "hrv_median": 54.89955,
+    "respiratory_rate_median": null
+  },
+  "2024-12-07 12:00": {
+    "heart_rate_median": 89.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-07 13:00": {
+    "heart_rate_median": 121.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-07 14:00": {
+    "heart_rate_median": 127.0,
+    "hrv_median": 27.3814,
+    "respiratory_rate_median": null
+  },
+  "2024-12-07 15:00": {
+    "heart_rate_median": 96.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-07 16:00": {
+    "heart_rate_median": 93.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-07 17:00": {
+    "heart_rate_median": 104.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-07 18:00": {
+    "heart_rate_median": 94.0,
+    "hrv_median": 15.0166,
+    "respiratory_rate_median": null
+  },
+  "2024-12-07 21:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-07 22:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": 49.7474,
+    "respiratory_rate_median": 10.5
+  },
+  "2024-12-07 23:00": {
+    "heart_rate_median": 82.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 00:00": {
+    "heart_rate_median": 79.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 01:00": {
+    "heart_rate_median": 91.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 09:00": {
+    "heart_rate_median": 87.66975,
+    "hrv_median": 18.925,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 10:00": {
+    "heart_rate_median": 91.8668,
+    "hrv_median": 35.0227,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 11:00": {
+    "heart_rate_median": 79.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 12:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 13:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 14:00": {
+    "heart_rate_median": 98.0,
+    "hrv_median": 25.8268,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 15:00": {
+    "heart_rate_median": 85.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 16:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 17:00": {
+    "heart_rate_median": 96.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 18:00": {
+    "heart_rate_median": 94.0,
+    "hrv_median": 50.4132,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 19:00": {
+    "heart_rate_median": 88.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 20:00": {
+    "heart_rate_median": 86.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 21:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 22:00": {
+    "heart_rate_median": 67.0,
+    "hrv_median": 38.8332,
+    "respiratory_rate_median": null
+  },
+  "2024-12-08 23:00": {
+    "heart_rate_median": 68.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-09 14:00": {
+    "heart_rate_median": 83.0,
+    "hrv_median": 42.3674,
+    "respiratory_rate_median": null
+  },
+  "2024-12-09 15:00": {
+    "heart_rate_median": 81.0,
+    "hrv_median": 74.229,
+    "respiratory_rate_median": null
+  },
+  "2024-12-09 16:00": {
+    "heart_rate_median": 80.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-09 17:00": {
+    "heart_rate_median": 97.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-09 18:00": {
+    "heart_rate_median": 85.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-09 19:00": {
+    "heart_rate_median": 72.0,
+    "hrv_median": 90.0806,
+    "respiratory_rate_median": null
+  },
+  "2024-12-09 20:00": {
+    "heart_rate_median": 67.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-09 21:00": {
+    "heart_rate_median": 71.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-09 22:00": {
+    "heart_rate_median": 66.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-10 07:00": {
+    "heart_rate_median": 115.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-10 08:00": {
+    "heart_rate_median": 79.0,
+    "hrv_median": 40.8111,
+    "respiratory_rate_median": null
+  },
+  "2024-12-10 09:00": {
+    "heart_rate_median": 99.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-10 10:00": {
+    "heart_rate_median": 90.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-10 11:00": {
+    "heart_rate_median": 109.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-10 12:00": {
+    "heart_rate_median": 106.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-10 13:00": {
+    "heart_rate_median": 120.5,
+    "hrv_median": 19.3147,
+    "respiratory_rate_median": null
+  },
+  "2024-12-10 14:00": {
+    "heart_rate_median": 113.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-10 15:00": {
+    "heart_rate_median": 116.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-10 16:00": {
+    "heart_rate_median": 122.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-10 17:00": {
+    "heart_rate_median": 94.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-10 18:00": {
+    "heart_rate_median": 88.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 07:00": {
+    "heart_rate_median": 105.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 08:00": {
+    "heart_rate_median": 79.29679999999999,
+    "hrv_median": 58.1626,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 09:00": {
+    "heart_rate_median": 100.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 10:00": {
+    "heart_rate_median": 76.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 11:00": {
+    "heart_rate_median": 85.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 12:00": {
+    "heart_rate_median": 79.3025,
+    "hrv_median": 46.2111,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 13:00": {
+    "heart_rate_median": 90.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 14:00": {
+    "heart_rate_median": 100.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 15:00": {
+    "heart_rate_median": 85.0,
+    "hrv_median": 60.7985,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 16:00": {
+    "heart_rate_median": 93.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 17:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 18:00": {
+    "heart_rate_median": 75.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 19:00": {
+    "heart_rate_median": 71.0,
+    "hrv_median": 37.9134,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 20:00": {
+    "heart_rate_median": 72.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 21:00": {
+    "heart_rate_median": 64.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-11 22:00": {
+    "heart_rate_median": 61.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-12 07:00": {
+    "heart_rate_median": 108.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-12 08:00": {
+    "heart_rate_median": 98.0,
+    "hrv_median": 69.709,
+    "respiratory_rate_median": null
+  },
+  "2024-12-12 09:00": {
+    "heart_rate_median": 104.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-12 10:00": {
+    "heart_rate_median": 131.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-12 11:00": {
+    "heart_rate_median": 114.0,
+    "hrv_median": 23.4414,
+    "respiratory_rate_median": null
+  },
+  "2024-12-12 12:00": {
+    "heart_rate_median": 94.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-12 13:00": {
+    "heart_rate_median": 87.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-12 14:00": {
+    "heart_rate_median": 103.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-12 15:00": {
+    "heart_rate_median": 104.0,
+    "hrv_median": 43.3774,
+    "respiratory_rate_median": null
+  },
+  "2024-12-12 16:00": {
+    "heart_rate_median": 87.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-12 17:00": {
+    "heart_rate_median": 85.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-12 18:00": {
+    "heart_rate_median": 99.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-13 15:00": {
+    "heart_rate_median": 84.062,
+    "hrv_median": 72.5,
+    "respiratory_rate_median": null
+  },
+  "2024-12-13 16:00": {
+    "heart_rate_median": 79.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-13 17:00": {
+    "heart_rate_median": 123.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-13 18:00": {
+    "heart_rate_median": 126.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-13 19:00": {
+    "heart_rate_median": 71.0,
+    "hrv_median": 45.4098,
+    "respiratory_rate_median": null
+  },
+  "2024-12-13 20:00": {
+    "heart_rate_median": 64.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-13 21:00": {
+    "heart_rate_median": 72.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-13 22:00": {
+    "heart_rate_median": 68.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 08:00": {
+    "heart_rate_median": 100.0,
+    "hrv_median": 23.8203,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 09:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 10:00": {
+    "heart_rate_median": 85.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 11:00": {
+    "heart_rate_median": 83.5,
+    "hrv_median": 62.9923,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 12:00": {
+    "heart_rate_median": 78.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 13:00": {
+    "heart_rate_median": 99.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 14:00": {
+    "heart_rate_median": 85.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 15:00": {
+    "heart_rate_median": 83.0,
+    "hrv_median": 51.9049,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 16:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 17:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 18:00": {
+    "heart_rate_median": 128.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 19:00": {
+    "heart_rate_median": 143.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 20:00": {
+    "heart_rate_median": 104.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 21:00": {
+    "heart_rate_median": 109.0,
+    "hrv_median": 22.8644,
+    "respiratory_rate_median": null
+  },
+  "2024-12-14 22:00": {
+    "heart_rate_median": 100.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-15 13:00": {
+    "heart_rate_median": 69.0,
+    "hrv_median": 62.2887,
+    "respiratory_rate_median": null
+  },
+  "2024-12-15 14:00": {
+    "heart_rate_median": 72.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-15 15:00": {
+    "heart_rate_median": 74.0036,
+    "hrv_median": 43.8048,
+    "respiratory_rate_median": null
+  },
+  "2024-12-15 16:00": {
+    "heart_rate_median": 71.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-15 17:00": {
+    "heart_rate_median": 70.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-15 18:00": {
+    "heart_rate_median": 68.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-15 19:00": {
+    "heart_rate_median": 64.0,
+    "hrv_median": 32.4174,
+    "respiratory_rate_median": null
+  },
+  "2024-12-15 20:00": {
+    "heart_rate_median": 67.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-15 21:00": {
+    "heart_rate_median": 64.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-15 22:00": {
+    "heart_rate_median": 65.0,
+    "hrv_median": null,
+    "respiratory_rate_median": 20.5
+  },
+  "2024-12-16 09:00": {
+    "heart_rate_median": 113.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-16 11:00": {
+    "heart_rate_median": 125.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-16 12:00": {
+    "heart_rate_median": 99.48895,
+    "hrv_median": 27.21,
+    "respiratory_rate_median": null
+  },
+  "2024-12-16 13:00": {
+    "heart_rate_median": 105.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-16 14:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-16 22:00": {
+    "heart_rate_median": 85.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-29 13:00": {
+    "heart_rate_median": 86.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-29 14:00": {
+    "heart_rate_median": 73.0,
+    "hrv_median": 43.938,
+    "respiratory_rate_median": null
+  },
+  "2024-12-29 15:00": {
+    "heart_rate_median": 97.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-29 16:00": {
+    "heart_rate_median": 98.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-29 17:00": {
+    "heart_rate_median": 93.0,
+    "hrv_median": 33.0241,
+    "respiratory_rate_median": null
+  },
+  "2024-12-29 18:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-29 19:00": {
+    "heart_rate_median": 71.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-29 20:00": {
+    "heart_rate_median": 77.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-29 21:00": {
+    "heart_rate_median": 73.65209999999999,
+    "hrv_median": 31.3016,
+    "respiratory_rate_median": 20.75
+  },
+  "2024-12-29 22:00": {
+    "heart_rate_median": 70.0,
+    "hrv_median": null,
+    "respiratory_rate_median": 19.0
+  },
+  "2024-12-29 23:00": {
+    "heart_rate_median": 66.0,
+    "hrv_median": null,
+    "respiratory_rate_median": 17.5
+  },
+  "2024-12-30 11:00": {
+    "heart_rate_median": 91.0,
+    "hrv_median": 42.1466,
+    "respiratory_rate_median": null
+  },
+  "2024-12-30 12:00": {
+    "heart_rate_median": 87.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-30 13:00": {
+    "heart_rate_median": 79.5,
+    "hrv_median": 70.3255,
+    "respiratory_rate_median": null
+  },
+  "2024-12-30 14:00": {
+    "heart_rate_median": 75.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-30 15:00": {
+    "heart_rate_median": 71.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-30 16:00": {
+    "heart_rate_median": 94.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-30 17:00": {
+    "heart_rate_median": 90.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-30 18:00": {
+    "heart_rate_median": 81.0,
+    "hrv_median": 27.645,
+    "respiratory_rate_median": null
+  },
+  "2024-12-30 19:00": {
+    "heart_rate_median": 72.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-30 20:00": {
+    "heart_rate_median": 78.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-30 21:00": {
+    "heart_rate_median": 68.5,
+    "hrv_median": 30.6563,
+    "respiratory_rate_median": 17.5
+  },
+  "2024-12-30 22:00": {
+    "heart_rate_median": 67.0,
+    "hrv_median": null,
+    "respiratory_rate_median": 19.0
+  },
+  "2024-12-30 23:00": {
+    "heart_rate_median": 90.5,
+    "hrv_median": null,
+    "respiratory_rate_median": 17.0
+  },
+  "2024-12-31 00:00": {
+    "heart_rate_median": 74.5,
+    "hrv_median": null,
+    "respiratory_rate_median": 18.0
+  },
+  "2024-12-31 10:00": {
+    "heart_rate_median": 90.3395,
+    "hrv_median": 24.862,
+    "respiratory_rate_median": null
+  },
+  "2024-12-31 11:00": {
+    "heart_rate_median": 81.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-31 12:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-31 13:00": {
+    "heart_rate_median": 85.0,
+    "hrv_median": 47.2651,
+    "respiratory_rate_median": null
+  },
+  "2024-12-31 14:00": {
+    "heart_rate_median": 110.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-31 15:00": {
+    "heart_rate_median": 109.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-31 16:00": {
+    "heart_rate_median": 120.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-31 17:00": {
+    "heart_rate_median": 120.0,
+    "hrv_median": 20.4731,
+    "respiratory_rate_median": null
+  },
+  "2024-12-31 18:00": {
+    "heart_rate_median": 85.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-31 19:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-31 20:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2024-12-31 21:00": {
+    "heart_rate_median": 83.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-01 13:00": {
+    "heart_rate_median": 83.0,
+    "hrv_median": 34.97455,
+    "respiratory_rate_median": null
+  },
+  "2025-01-01 14:00": {
+    "heart_rate_median": 80.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-01 15:00": {
+    "heart_rate_median": 82.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-01 16:00": {
+    "heart_rate_median": 95.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-01 17:00": {
+    "heart_rate_median": 93.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-01 18:00": {
+    "heart_rate_median": 87.76265000000001,
+    "hrv_median": 28.0478,
+    "respiratory_rate_median": null
+  },
+  "2025-01-01 19:00": {
+    "heart_rate_median": 94.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-01 20:00": {
+    "heart_rate_median": 90.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-01 21:00": {
+    "heart_rate_median": 82.0,
+    "hrv_median": 65.739,
+    "respiratory_rate_median": null
+  },
+  "2025-01-01 22:00": {
+    "heart_rate_median": 72.5,
+    "hrv_median": null,
+    "respiratory_rate_median": 19.0
+  },
+  "2025-01-01 23:00": {
+    "heart_rate_median": 73.0,
+    "hrv_median": null,
+    "respiratory_rate_median": 19.5
+  },
+  "2025-01-02 00:00": {
+    "heart_rate_median": 84.0,
+    "hrv_median": null,
+    "respiratory_rate_median": 18.25
+  },
+  "2025-01-02 01:00": {
+    "heart_rate_median": 75.0,
+    "hrv_median": null,
+    "respiratory_rate_median": 21.0
+  },
+  "2025-01-02 17:00": {
+    "heart_rate_median": 97.0,
+    "hrv_median": 34.3899,
+    "respiratory_rate_median": null
+  },
+  "2025-01-03 12:00": {
+    "heart_rate_median": 91.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-03 13:00": {
+    "heart_rate_median": 103.175,
+    "hrv_median": 37.67835,
+    "respiratory_rate_median": null
+  },
+  "2025-01-03 14:00": {
+    "heart_rate_median": 95.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-03 15:00": {
+    "heart_rate_median": 96.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-03 16:00": {
+    "heart_rate_median": 104.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-03 17:00": {
+    "heart_rate_median": 98.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-03 18:00": {
+    "heart_rate_median": 117.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-06 19:00": {
+    "heart_rate_median": 77.0,
+    "hrv_median": 35.4356,
+    "respiratory_rate_median": null
+  },
+  "2025-01-06 20:00": {
+    "heart_rate_median": 80.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-06 21:00": {
+    "heart_rate_median": 85.0,
+    "hrv_median": null,
+    "respiratory_rate_median": 22.75
+  },
+  "2025-01-06 22:00": {
+    "heart_rate_median": 82.445,
+    "hrv_median": 30.3358,
+    "respiratory_rate_median": 23.75
+  },
+  "2025-01-06 23:00": {
+    "heart_rate_median": 72.0,
+    "hrv_median": null,
+    "respiratory_rate_median": 10.5
+  },
+  "2025-01-07 14:00": {
+    "heart_rate_median": 76.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-07 15:00": {
+    "heart_rate_median": 73.5,
+    "hrv_median": 44.7854,
+    "respiratory_rate_median": null
+  },
+  "2025-01-07 16:00": {
+    "heart_rate_median": 104.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-07 18:00": {
+    "heart_rate_median": 108.0,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-07 22:00": {
+    "heart_rate_median": 86.5,
+    "hrv_median": null,
+    "respiratory_rate_median": null
+  },
+  "2025-01-07 23:00": {
+    "heart_rate_median": 77.8145,
+    "hrv_median": 33.64,
+    "respiratory_rate_median": null
+  }
+}

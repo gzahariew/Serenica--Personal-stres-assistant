@@ -4,6 +4,17 @@ interface UserProfile {
   bmi: number;
 }
 
+interface HealthMetric {
+  value: number;
+  timestamp: Date;
+}
+
+interface HourlyData {
+  heartRates: HealthMetric[];
+  hrvValues: HealthMetric[];
+  respiratoryRates: HealthMetric[];
+}
+
 interface StressData {
   heartRate: number;
   hrvMs: number;
@@ -24,12 +35,16 @@ interface StressResult {
   timestamp: Date;
 }
 
-export const Gender = {
+interface HourlyStressResult {
+  [hour: string]: StressResult;
+}
+
+const Gender = {
   MALE: "male",
   FEMALE: "female",
 } as const;
 
-export const SleepQuality = {
+const SleepQuality = {
   VERY_GOOD: 5,
   GOOD: 4,
   NEUTRAL: 3,
@@ -37,7 +52,7 @@ export const SleepQuality = {
   VERY_BAD: 1,
 } as const;
 
-export class StressIndexCalculator {
+export class HourlyStressCalculator {
   private profile: UserProfile;
   private lastStressValue: number | null;
   private expectedHrv!: number;
@@ -51,7 +66,7 @@ export class StressIndexCalculator {
   }
 
   private validateProfile(profile: UserProfile): void {
-    const required = ["age", "gender", "bmi"];
+    const required = ["age", "gender", "bmi"] as const;
     required.forEach((field) => {
       if (!(field in profile)) {
         throw new Error(`Missing required profile field: ${field}`);
@@ -139,26 +154,51 @@ export class StressIndexCalculator {
     return "Extreme";
   }
 
-  calculateStress(data: StressData): StressResult {
-    if (!data.heartRate || !data.hrvMs) {
-      throw new Error("Heart rate and HRV are required for stress calculation");
+  private median(numbers: number[]): number {
+    const sorted = [...numbers].sort((a, b) => a - b);
+    const middle = Math.floor(sorted.length / 2);
+    
+    if (sorted.length % 2 === 0) {
+      return (sorted[middle - 1] + sorted[middle]) / 2;
+    }
+    
+    return sorted[middle];
+  }
+
+  calculateHourlyStress(hourlyData: HourlyData, sleepData?: { 
+    sleepQuality?: number; 
+    hoursSlept?: number; 
+  }): StressResult {
+    if (!hourlyData.heartRates.length || !hourlyData.hrvValues.length) {
+      throw new Error("Insufficient heart rate or HRV data for the hour");
     }
 
-    if (data.heartRate < 30 || data.heartRate > 200) {
-      throw new Error("Heart rate out of valid range (30-200 bpm)");
+    // Calculate median values for the hour
+    const heartRate = this.median(hourlyData.heartRates.map(hr => hr.value));
+    const hrv = this.median(hourlyData.hrvValues.map(hrv => hrv.value));
+    const respiratoryRate = hourlyData.respiratoryRates.length > 0
+      ? this.median(hourlyData.respiratoryRates.map(rr => rr.value))
+      : undefined;
+
+    // Validate ranges
+    if (heartRate < 30 || heartRate > 200) {
+      throw new Error("Hourly median heart rate out of valid range (30-200 bpm)");
     }
-    if (data.hrvMs < 0 || data.hrvMs > 300) {
-      throw new Error("HRV out of valid range (0-300 ms)");
+    if (hrv < 0 || hrv > 300) {
+      throw new Error("Hourly median HRV out of valid range (0-300 ms)");
     }
 
-    const baselineStress = this.calculateBaselineStress(data.heartRate, data.hrvMs);
+    const baselineStress = this.calculateBaselineStress(heartRate, hrv);
     const bmiImpact = this.calculateBmiImpact();
-    const sleepImpact = this.calculateSleepImpact(data.sleepQuality, data.hoursSlept);
+    const sleepImpact = this.calculateSleepImpact(
+      sleepData?.sleepQuality,
+      sleepData?.hoursSlept
+    );
 
     let stressScore = baselineStress * (1 + bmiImpact + sleepImpact);
 
-    if (data.respiratoryRate !== undefined) {
-      const rrImpact = (data.respiratoryRate - 12) / 20;
+    if (respiratoryRate !== undefined) {
+      const rrImpact = (respiratoryRate - 12) / 20;
       stressScore += rrImpact * 10;
     }
 
@@ -178,3 +218,4 @@ export class StressIndexCalculator {
     };
   }
 }
+
