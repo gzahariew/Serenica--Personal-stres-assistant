@@ -14,6 +14,8 @@ import { AppProviders } from "@/contexts/AppProviders";
 import { LoadingContext } from "@/contexts/LoadingContext";
 import { useRouter } from "expo-router";
 
+//TODO add the google fit with the algorithm via custom hook 
+
 function MainContent() {
   const { loading, startLoading, stopLoading } = useContext(LoadingContext);
   // const [stressData, setStressData] = useState<StressData[]>([]);

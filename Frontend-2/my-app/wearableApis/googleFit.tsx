@@ -1,39 +1,17 @@
 import GoogleFit, { Scopes } from "react-native-google-fit";
-import { StressResult } from '../types'; // Import the shared type instead of defining it
+import {
+  StressResult,
+  UserProfile,
+  ParsedHealthMetrics,
+  HealthMetric,
+  HourlyStressData,
+} from "../types"; // Import the shared type instead of defining it
 import { HourlyStressCalculator } from "@/algorithms/stressIndexAlgo";
-
-export interface UserProfile {
-  age: number;
-  gender: string;
-  bmi: number;
-}
 
 // Define the proper options type for Google Fit
 interface DateRange {
   startDate: string;
   endDate: string;
-}
-
-export interface ParsedHealthMetrics {
-  heartRates: HealthMetric[];
-  hrvValues: HealthMetric[];
-  respiratoryRates: HealthMetric[];
-  sleepData: {
-    quality?: number;
-    hoursSlept?: number;
-  };
-  activityData: {
-    steps: number;
-  };
-}
-
-export interface HealthMetric {
-  value: number;
-  timestamp: Date;
-}
-
-export interface HourlyStressData {
-  [hour: number]: StressResult | null;
 }
 
 const options = {
@@ -56,24 +34,27 @@ const generateHoursList = (): number[] => {
   return Array.from({ length: 24 }, (_, i) => i);
 };
 
-const groupDataByHour = (metrics: HealthMetric[], targetDate: string): { [hour: number]: HealthMetric[] } => {
+const groupDataByHour = (
+  metrics: HealthMetric[],
+  targetDate: string
+): { [hour: number]: HealthMetric[] } => {
   const hourlyData: { [hour: number]: HealthMetric[] } = {};
   const targetDay = new Date(targetDate).setHours(0, 0, 0, 0);
-  
-  generateHoursList().forEach(hour => {
+
+  generateHoursList().forEach((hour) => {
     hourlyData[hour] = [];
   });
 
-  metrics.forEach(metric => {
+  metrics.forEach((metric) => {
     const metricDate = new Date(metric.timestamp);
     const metricDay = new Date(metricDate).setHours(0, 0, 0, 0);
-    
+
     if (metricDay === targetDay) {
       const hour = metricDate.getHours();
       hourlyData[hour].push(metric);
     }
   });
-  
+
   return hourlyData;
 };
 
@@ -87,10 +68,12 @@ export const authorizeGoogleFit = async (): Promise<boolean> => {
   }
 };
 
-export const fetchParsedHealthMetrics = async (endDate: string): Promise<ParsedHealthMetrics> => {
+export const fetchParsedHealthMetrics = async (
+  endDate: string
+): Promise<ParsedHealthMetrics> => {
   try {
     const startDate = getStartDate(endDate);
-    
+
     // Convert dates to timestamps for Google Fit API
     const startTimestamp = new Date(startDate).valueOf();
     const endTimestamp = new Date(endDate).valueOf();
@@ -100,10 +83,13 @@ export const fetchParsedHealthMetrics = async (endDate: string): Promise<ParsedH
         startDate: startTimestamp,
         endDate: endTimestamp,
       } as any).catch(() => []),
-      GoogleFit.getSleepSamples({
-        startDate: startTimestamp,
-        endDate: endTimestamp,
-      } as any, true).catch(() => []),
+      GoogleFit.getSleepSamples(
+        {
+          startDate: startTimestamp,
+          endDate: endTimestamp,
+        } as any,
+        true
+      ).catch(() => []),
       GoogleFit.getDailySteps({
         startDate: startTimestamp,
         endDate: endTimestamp,
@@ -147,9 +133,9 @@ export const calculateDailyStress = async (
 
   const hourlyHeartRates = groupDataByHour(metrics.heartRates, endDate);
 
-  generateHoursList().forEach(hour => {
+  generateHoursList().forEach((hour) => {
     const heartRates = hourlyHeartRates[hour];
-    
+
     if (heartRates.length > 0) {
       const hourlyData = {
         heartRates,
@@ -163,14 +149,14 @@ export const calculateDailyStress = async (
           hourlyData,
           metrics.sleepData
         );
-        
+
         // Ensure the result has all required properties
         hourlyResults[hour] = {
           ...result,
           factors: {
             ...result.factors,
-            hrvAvailable: false // Add the missing property
-          }
+            hrvAvailable: false, // Add the missing property
+          },
         };
       } catch (error) {
         console.error(`Error calculating stress for hour ${hour}:`, error);
@@ -184,18 +170,20 @@ export const calculateDailyStress = async (
   return hourlyResults;
 };
 
-const parseSleepData = (data: any[]): { quality?: number; hoursSlept?: number } => {
+const parseSleepData = (
+  data: any[]
+): { quality?: number; hoursSlept?: number } => {
   if (!data.length) return {};
-  
+
   const sleepDurations = data.map((entry) => {
     const start = new Date(entry.startDate).getTime();
     const end = new Date(entry.endDate).getTime();
     return (end - start) / (1000 * 60 * 60);
   });
-  
+
   const totalSleepHours = sleepDurations.reduce((sum, hours) => sum + hours, 0);
   const sleepQuality = calculateSleepQuality(totalSleepHours);
-  
+
   return {
     hoursSlept: totalSleepHours,
     quality: sleepQuality,
