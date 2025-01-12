@@ -13,6 +13,7 @@ import IsUserSigned from "../components/IsUserSigned";
 import { AppProviders } from "@/contexts/AppProviders";
 import { LoadingContext } from "@/contexts/LoadingContext";
 import { useRouter } from "expo-router";
+import { onGoogleButtonPressLink } from "@/auth/googleAuth";
 
 //TODO add the google fit with the algorithm via custom hook 
 
@@ -61,6 +62,7 @@ function MainContent() {
       <IsUserSigned />
       <Text>Edit home/index.tsx to edit this screen.</Text>
       <Button title="Log out" onPress={signOut}></Button>
+      <Button title="Link google fit" onPress={onGoogleButtonPressLink}></Button>
     </View>
   );
 }
