@@ -7,6 +7,8 @@ import {
   HourlyStressData,
 } from "../types"; // Import the shared type instead of defining it
 import { HourlyStressCalculator } from "@/algorithms/stressIndexAlgo";
+import apiClient from "@/instances/authInstance";
+import googleFit from "react-native-google-fit";
 
 // Define the proper options type for Google Fit
 interface DateRange {
@@ -201,4 +203,19 @@ export const calculateSleepQuality = (hours: number): number => {
   if (hours >= 6) return 3;
   if (hours >= 5) return 2;
   return 1;
+};
+
+export const enableGoogleFit = async (): Promise<void> => {
+  try {
+    const response = await apiClient.post('/users/googleFit', { googleFit: true });
+    
+    // Check if the response is successful before logging
+    if (response.status === 200) {
+      console.log('Google Fit enabled successfully:', response.data);
+    } else {
+      console.error('Failed to enable Google Fit:', response.data);
+    }
+  } catch (err: any) {
+    console.error('Error enabling Google Fit:', err.message || err);
+  }
 };
