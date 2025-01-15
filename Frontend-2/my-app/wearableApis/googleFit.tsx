@@ -8,7 +8,10 @@ import {
 } from "../types"; // Import the shared type instead of defining it
 import { HourlyStressCalculator } from "@/algorithms/stressIndexAlgo";
 import apiClient from "@/instances/authInstance";
-import googleFit from "react-native-google-fit";
+import { MMKV } from 'react-native-mmkv';
+
+
+const storage = new MMKV();
 
 // Define the proper options type for Google Fit
 interface DateRange {
@@ -205,17 +208,48 @@ export const calculateSleepQuality = (hours: number): number => {
   return 1;
 };
 
-export const enableGoogleFit = async (): Promise<void> => {
+const GOOGLE_FIT_ENABLED_KEY = 'googleFitEnabled';
+
+export const checkAndEnableGoogleFit = async (): Promise<boolean> => {
   try {
-    const response = await apiClient.post('/users/googleFit', { googleFit: true });
+    // Step 1: Check if Google Fit is already enabled in the local cache
+    const cachedStatus = storage.getBoolean(GOOGLE_FIT_ENABLED_KEY);
+    if (cachedStatus) {
+      console.log('Google Fit is already enabled (cached).');
+      return true;
+    }
+
+    // Step 2: Query the server to check if Google Fit is enabled
+    const response = await apiClient.get('/users/googleFitStatus');
     
-    // Check if the response is successful before logging
-    if (response.status === 200) {
-      console.log('Google Fit enabled successfully:', response.data);
+    if (response.status === 200 && response.data.googleFit) {
+      console.log('Google Fit is already enabled (server).');
+      
+      // Cache the status in MMKV
+      storage.set(GOOGLE_FIT_ENABLED_KEY, true);
+      return true;
+    }
+
+    // Step 3: If not enabled, send a request to enable it
+    const enableResponse = await apiClient.post('/users/googleFit', { googleFit: true });
+    
+    if (enableResponse.status === 200) {
+      console.log('Google Fit enabled successfully:', enableResponse.data);
+      
+      // Cache the status in MMKV
+      storage.set(GOOGLE_FIT_ENABLED_KEY, true);
+      return true;
     } else {
-      console.error('Failed to enable Google Fit:', response.data);
+      console.error('Failed to enable Google Fit:', enableResponse.data);
+      return false;
     }
   } catch (err: any) {
-    console.error('Error enabling Google Fit:', err.message || err);
+    console.error('Error checking or enabling Google Fit:', err.message || err);
+    return false;
   }
+};
+
+export const isGoogleFitEnabled = (): boolean => {
+  // Retrieve Google Fit status from MMKV
+  return storage.getBoolean(GOOGLE_FIT_ENABLED_KEY) || false;
 };
