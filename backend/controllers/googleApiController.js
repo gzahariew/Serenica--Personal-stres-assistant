@@ -1,4 +1,4 @@
-import { db } from "../config/firebaseAdmin";
+import { db } from "../config/firebaseAdmin.js"; 
 
 export const enableGoogleFit = async (req, res) => {
   try {
