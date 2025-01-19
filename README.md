@@ -20,6 +20,7 @@ Serenica aims to help users monitor and manage their stress levels by analyzing 
 - Local and backend data caching for optimal performance.  
 - Robust privacy compliance (GDPR).  
 
+
 ---
 
 ## 🛠️ Tech Stack  
@@ -31,15 +32,5 @@ Serenica aims to help users monitor and manage their stress levels by analyzing 
 
 ---
 
-## 📜 License  
-This project is open-source under the [MIT License](LICENSE).
-
----
-
-## 🌟 Contributing  
-We welcome contributions to Serenica! Whether it's a bug fix, feature idea, or documentation improvement, feel free to open an issue or submit a pull request.  
-
----
-
 ## 🛡️ Privacy and Security  
-User data privacy is a priority. We are working toward full compliance with GDPR and other privacy standards.  
+User data privacy is a priority. I am working toward full compliance with GDPR and other privacy standards.  
