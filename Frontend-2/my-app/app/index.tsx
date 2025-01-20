@@ -14,9 +14,8 @@ import { AppProviders } from "@/contexts/AppProviders";
 import { LoadingContext } from "@/contexts/LoadingContext";
 import { useRouter } from "expo-router";
 import { onGoogleButtonPressLink } from "@/auth/googleAuth";
-
-//TODO add the google fit with the algorithm via custom hook 
-
+import { GoogleFitProvider } from "../contexts/GoogleFitContext";
+import { StressChart } from "@/components/StressChart";
 function MainContent() {
   const { loading, startLoading, stopLoading } = useContext(LoadingContext);
   // const [stressData, setStressData] = useState<StressData[]>([]);
@@ -62,7 +61,11 @@ function MainContent() {
       <IsUserSigned />
       <Text>Edit home/index.tsx to edit this screen.</Text>
       <Button title="Log out" onPress={signOut}></Button>
-      <Button title="Link google fit" onPress={onGoogleButtonPressLink}></Button>
+      {/* <StressChart /> */}
+      <Button
+        title="Link google fit"
+        onPress={onGoogleButtonPressLink}
+      ></Button>
     </View>
   );
 }
@@ -71,8 +74,9 @@ function MainContent() {
 export default function Index() {
   return (
     <AppProviders>
-      <MainContent />
+      <GoogleFitProvider>
+        <MainContent />
+      </GoogleFitProvider>
     </AppProviders>
   );
 }
-

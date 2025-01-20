@@ -38,3 +38,21 @@ export interface HealthMetric {
 export interface HourlyStressData {
   [hour: number]: StressResult | null;
 }
+
+export interface UserData {
+  name: string;
+  email: string;
+  age: number;
+  height: number;
+  weight: number;
+  sleep: string;
+  gender: string;
+  preferences: {
+    activity: boolean;
+    deepBreathing: boolean;
+    meditation: boolean;
+    other: boolean;
+    socialInteraction: boolean;
+    walk: boolean;
+  };
+}
