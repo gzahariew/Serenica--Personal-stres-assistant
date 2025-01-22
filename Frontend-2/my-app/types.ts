@@ -47,6 +47,9 @@ export interface UserData {
   weight: number;
   sleep: string;
   gender: string;
+  googleFit: boolean;
+  exercise: boolean;
+  createdAt: Date;
   preferences: {
     activity: boolean;
     deepBreathing: boolean;
