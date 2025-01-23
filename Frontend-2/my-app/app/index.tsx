@@ -72,9 +72,9 @@ function MainContent() {
   
 
   const userProfile: UserProfile = {
-    age:  25, // Default to 25 if undefined
-    gender:  "male", // Default to "male" if undefined
-    bmi: 23, // Use the calculated BMI or default to 23
+    age: userData?.age ?? 25, // Default to 25 if undefined
+    gender: userData?.gender ?? "male", // Default to "male" if undefined
+    bmi: bmi ?? 23, // Use the calculated BMI or default to 23
   };
 
   if (loading || initializing ) {
