@@ -58,6 +58,8 @@ export class HourlyStressCalculator {
   private expectedHrv!: number;
   private hrvRange!: number;
 
+  
+
   constructor(userProfile: UserProfile) {
     this.validateProfile(userProfile);
     this.profile = userProfile;
@@ -165,6 +167,13 @@ export class HourlyStressCalculator {
     return sorted[middle];
   }
 
+  private estimateHrvFromHeartRate(hr: number): number {
+    // Simple estimation: higher HR generally means lower HRV
+    return Math.max(20, this.expectedHrv * (1 - (hr - 60) / 100));
+  }
+
+  
+
   calculateHourlyStress(hourlyData: HourlyData, sleepData?: { 
     sleepQuality?: number; 
     hoursSlept?: number; 
@@ -175,7 +184,10 @@ export class HourlyStressCalculator {
 
     // Calculate median values for the hour
     const heartRate = this.median(hourlyData.heartRates.map(hr => hr.value));
-    const hrv = this.median(hourlyData.hrvValues.map(hrv => hrv.value));
+    const hrv = hourlyData.hrvValues.length > 0 
+    ? this.median(hourlyData.hrvValues.map(hrv => hrv.value))
+    : this.estimateHrvFromHeartRate(heartRate);
+
     const respiratoryRate = hourlyData.respiratoryRates.length > 0
       ? this.median(hourlyData.respiratoryRates.map(rr => rr.value))
       : undefined;

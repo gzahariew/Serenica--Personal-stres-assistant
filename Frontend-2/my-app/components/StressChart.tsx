@@ -94,7 +94,9 @@ export const StressChart: React.FC<StressChartProps> = ({
       {
         data: Array.from({ length: 24 }, (_, i) => {
           const hourData = stressData[i];
-          return hourData?.stressIndex ?? 0;
+          // console.log(`Hour ${i} data:`, hourData);
+          // Always return a number, even if it's 0
+          return hourData?.stressIndex || 0;
         }),
       },
     ],

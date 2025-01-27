@@ -66,6 +66,9 @@ const groupDataByHour = (
 export const authorizeGoogleFit = async (): Promise<boolean> => {
   try {
     const authResult = await GoogleFit.authorize(options);
+    if (authResult.success) {
+      console.log("GoogleFit auth success");
+    }
     return authResult.success;
   } catch (error) {
     console.error("Authorization error:", error);
@@ -83,23 +86,38 @@ export const fetchParsedHealthMetrics = async (
     const startTimestamp = new Date(startDate).valueOf();
     const endTimestamp = new Date(endDate).valueOf();
 
+    console.log('Fetching data for timeframe:', { startDate, endDate });
+
     const [heartRates, sleepData, activityData] = await Promise.all([
       GoogleFit.getHeartRateSamples({
         startDate: startTimestamp,
         endDate: endTimestamp,
-      } as any).catch(() => []),
+      } as any).catch((err) => {
+        console.error('Error fetching heart rates:', err);
+        return [];
+      }),
       GoogleFit.getSleepSamples(
         {
           startDate: startTimestamp,
           endDate: endTimestamp,
         } as any,
         true
-      ).catch(() => []),
+      ).catch((err) => {
+        console.error('Error fetching sleep data:', err);
+        return [];
+      }),
       GoogleFit.getDailySteps({
         startDate: startTimestamp,
         endDate: endTimestamp,
-      } as any).catch(() => []),
+      } as any).catch((err) => {
+        console.error('Error fetching activity data:', err);
+        return [];
+      }),
     ]);
+
+    console.log('Fetched heart rates:', heartRates);
+    console.log('Fetched sleep data:', sleepData);
+    console.log('Fetched activity data:', activityData);
 
     const parsedHeartRates = heartRates.map((hr) => ({
       value: hr.value,
@@ -136,39 +154,63 @@ export const calculateDailyStress = async (
   const calculator = new HourlyStressCalculator(profile);
   const hourlyResults: HourlyStressData = {};
 
+  console.log('Fetched metrics:', {
+    heartRateCount: metrics.heartRates.length,
+    timeframe: endDate,
+    sleepData: metrics.sleepData
+  });
+
   const hourlyHeartRates = groupDataByHour(metrics.heartRates, endDate);
 
   generateHoursList().forEach((hour) => {
     const heartRates = hourlyHeartRates[hour];
 
-    if (heartRates.length > 0) {
-      const hourlyData = {
-        heartRates,
-        hrvValues: [],
-        respiratoryRates: [],
-      };
-
+    if (heartRates && heartRates.length > 0) {
       try {
-        // Use proper typing for StressResult
         const result = calculator.calculateHourlyStress(
-          hourlyData,
+          {
+            heartRates,
+            hrvValues: [], // We know this is empty
+            respiratoryRates: [],
+          },
           metrics.sleepData
         );
 
-        // Ensure the result has all required properties
         hourlyResults[hour] = {
           ...result,
           factors: {
             ...result.factors,
-            hrvAvailable: false, // Add the missing property
+            hrvAvailable: false,
           },
         };
       } catch (error) {
         console.error(`Error calculating stress for hour ${hour}:`, error);
-        hourlyResults[hour] = null;
+        hourlyResults[hour] = {
+          stressIndex: 0,
+          stressLevel: "Unknown",
+          isElevated: false,
+          baselineStress: 0,
+          factors: {
+            bmiImpact: 0,
+            sleepImpact: 0,
+            hrvAvailable: false,
+          },
+          timestamp: new Date()
+        };
       }
     } else {
-      hourlyResults[hour] = null;
+      hourlyResults[hour] = {
+        stressIndex: 0,
+        stressLevel: "No Data",
+        isElevated: false,
+        baselineStress: 0,
+        factors: {
+          bmiImpact: 0,
+          sleepImpact: 0,
+          hrvAvailable: false,
+        },
+        timestamp: new Date()
+      };
     }
   });
 
