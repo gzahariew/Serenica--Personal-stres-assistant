@@ -17,7 +17,6 @@
     "firebase-admin": "^13.0.2",
     "firebase-mock": "^2.2.4",
     "googleapis": "^144.0.0",
-    "mongoose": "^8.8.4",
     "redis": "^4.7.0"
   },
   "devDependencies": {
