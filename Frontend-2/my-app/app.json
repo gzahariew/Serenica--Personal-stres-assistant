@@ -18,7 +18,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": ["android.permission.ACTIVITY_RECOGNITION"]
     },
     "web": {
       "bundler": "metro",
@@ -39,8 +40,13 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-secure-store",
-      "react-native-permissions"
+      "expo-secure-store"
+      // "react-native-permissions",
+      // {
+      //   "iosPermissions": [],
+      //   "androidPermissions": [
+      //   ]
+      // }
     ],
     "experiments": {
       "typedRoutes": true

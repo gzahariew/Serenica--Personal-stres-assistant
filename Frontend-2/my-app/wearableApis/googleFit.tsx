@@ -83,8 +83,8 @@ export const fetchParsedHealthMetrics = async (
     const startDate = getStartDate(endDate);
 
     // Convert dates to timestamps for Google Fit API
-    const startTimestamp = new Date(startDate).valueOf();
-    const endTimestamp = new Date(endDate).valueOf();
+    const startTimestamp = startDate ? new Date(startDate).getTime() : Date.now() - 24 * 60 * 60 * 1000;
+    const endTimestamp = endDate ? new Date(endDate).getTime() : Date.now();
 
     console.log('Fetching data for timeframe:', { startDate, endDate });
 

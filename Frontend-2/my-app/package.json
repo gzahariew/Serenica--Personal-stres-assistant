@@ -45,7 +45,6 @@
     "react-native-gesture-handler": "~2.22.1",
     "react-native-google-fit": "^0.21.0",
     "react-native-mmkv": "^3.2.0",
-    "react-native-permissions": "^5.2.4",
     "react-native-reanimated": "~3.16.7",
     "react-native-safe-area-context": "5.1.0",
     "react-native-screens": "~4.5.0",
