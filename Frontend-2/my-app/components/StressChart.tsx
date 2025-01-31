@@ -37,6 +37,7 @@ export const StressChart: React.FC<StressChartProps> = ({
     try {
       setIsLoading(true);
       const endDate = new Date().toISOString();
+      console.log("Chart endDate",endDate);
       const data = await calculateDailyStress(userProfile, endDate);
       console.log("Fetched stress data:", data); // Log fetched data
       setStressData(data);

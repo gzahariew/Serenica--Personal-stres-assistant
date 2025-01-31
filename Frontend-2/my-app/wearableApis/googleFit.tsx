@@ -1,4 +1,4 @@
-import GoogleFit, { Scopes } from "react-native-google-fit";
+import GoogleFit, { BucketUnit, Scopes } from "react-native-google-fit";
 import {
   StressResult,
   UserProfile,
@@ -8,8 +8,8 @@ import {
 } from "../types"; // Import the shared type instead of defining it
 import { HourlyStressCalculator } from "@/algorithms/stressIndexAlgo";
 import apiClient from "@/instances/authInstance";
-import { MMKV } from 'react-native-mmkv';
-
+import { MMKV } from "react-native-mmkv";
+import dayjs from "dayjs";
 
 const storage = new MMKV();
 
@@ -29,10 +29,9 @@ const options = {
 };
 
 const getStartDate = (endDate: string): string => {
-  const end = new Date(endDate);
-  const start = new Date(end);
-  start.setHours(end.getHours() - 24);
-  return start.toISOString();
+  return dayjs(endDate || undefined)
+    .subtract(24, "hours")
+    .toISOString();
 };
 
 const generateHoursList = (): number[] => {
@@ -76,63 +75,52 @@ export const authorizeGoogleFit = async (): Promise<boolean> => {
   }
 };
 
-export const fetchParsedHealthMetrics = async (
+const fetchParsedHealthMetrics = async (
   endDate: string
 ): Promise<ParsedHealthMetrics> => {
   try {
-    const startDate = getStartDate(endDate);
+    const opts: any = {
+      startDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), // 7 days ago
+      endDate: new Date().toISOString(),
+      bucketUnit: BucketUnit.HOUR,
+      bucketInterval: 1,
+    };
 
-    // Convert dates to timestamps for Google Fit API
-    const startTimestamp = startDate ? new Date(startDate).getTime() : Date.now() - 24 * 60 * 60 * 1000;
-    const endTimestamp = endDate ? new Date(endDate).getTime() : Date.now();
+    console.log("Fetching with options:", opts); // Debugging
 
-    console.log('Fetching data for timeframe:', { startDate, endDate });
+    const heartRatesTest = await GoogleFit.getHeartRateSamples(opts);
+    console.log('Fetched heart rates:', heartRatesTest);
 
     const [heartRates, sleepData, activityData] = await Promise.all([
-      GoogleFit.getHeartRateSamples({
-        startDate: startTimestamp,
-        endDate: endTimestamp,
-      } as any).catch((err) => {
-        console.error('Error fetching heart rates:', err);
+      GoogleFit.getHeartRateSamples(opts).catch((err) => {
+        console.error("Error fetching heart rates:", err);
         return [];
       }),
-      GoogleFit.getSleepSamples(
-        {
-          startDate: startTimestamp,
-          endDate: endTimestamp,
-        } as any,
-        true
-      ).catch((err) => {
-        console.error('Error fetching sleep data:', err);
+      GoogleFit.getSleepSamples(opts, true).catch((err) => {
+        console.error("Error fetching sleep data:", err);
         return [];
       }),
-      GoogleFit.getDailySteps({
-        startDate: startTimestamp,
-        endDate: endTimestamp,
-      } as any).catch((err) => {
-        console.error('Error fetching activity data:', err);
+      GoogleFit.getDailySteps(opts).catch((err) => {
+        console.error("Error fetching activity data:", err);
         return [];
       }),
     ]);
 
-    console.log('Fetched heart rates:', heartRates);
-    console.log('Fetched sleep data:', sleepData);
-    console.log('Fetched activity data:', activityData);
+    console.log("Fetched heart rates:", heartRates);
+    console.log("Fetched sleep data:", sleepData);
+    console.log("Fetched activity data:", activityData);
 
     const parsedHeartRates = heartRates.map((hr) => ({
       value: hr.value,
       timestamp: new Date(hr.startDate),
     }));
 
-    const parsedSleepData = parseSleepData(sleepData);
-    const parsedActivityData = parseActivityData(activityData);
-
     return {
       heartRates: parsedHeartRates,
       hrvValues: [],
       respiratoryRates: [],
-      sleepData: parsedSleepData,
-      activityData: parsedActivityData,
+      sleepData: parseSleepData(sleepData),
+      activityData: parseActivityData(activityData),
     };
   } catch (error) {
     console.error("Error fetching or parsing health metrics:", error);
@@ -154,10 +142,10 @@ export const calculateDailyStress = async (
   const calculator = new HourlyStressCalculator(profile);
   const hourlyResults: HourlyStressData = {};
 
-  console.log('Fetched metrics:', {
+  console.log("Fetched metrics:", {
     heartRateCount: metrics.heartRates.length,
     timeframe: endDate,
-    sleepData: metrics.sleepData
+    sleepData: metrics.sleepData,
   });
 
   const hourlyHeartRates = groupDataByHour(metrics.heartRates, endDate);
@@ -195,7 +183,7 @@ export const calculateDailyStress = async (
             sleepImpact: 0,
             hrvAvailable: false,
           },
-          timestamp: new Date()
+          timestamp: new Date(),
         };
       }
     } else {
@@ -209,7 +197,7 @@ export const calculateDailyStress = async (
           sleepImpact: 0,
           hrvAvailable: false,
         },
-        timestamp: new Date()
+        timestamp: new Date(),
       };
     }
   });
@@ -250,43 +238,45 @@ export const calculateSleepQuality = (hours: number): number => {
   return 1;
 };
 
-const GOOGLE_FIT_ENABLED_KEY = 'googleFitEnabled';
+const GOOGLE_FIT_ENABLED_KEY = "googleFitEnabled";
 
 export const checkAndEnableGoogleFit = async (): Promise<boolean> => {
   try {
     // Step 1: Check if Google Fit is already enabled in the local cache
     const cachedStatus = storage.getBoolean(GOOGLE_FIT_ENABLED_KEY);
     if (cachedStatus) {
-      console.log('Google Fit is already enabled (cached).');
+      console.log("Google Fit is already enabled (cached).");
       return true;
     }
 
     // Step 2: Query the server to check if Google Fit is enabled
-    const response = await apiClient.get('/users/googleFitStatus');
-    
+    const response = await apiClient.get("/users/googleFitStatus");
+
     if (response.status === 200 && response.data.googleFit) {
-      console.log('Google Fit is already enabled (server).');
-      
+      console.log("Google Fit is already enabled (server).");
+
       // Cache the status in MMKV
       storage.set(GOOGLE_FIT_ENABLED_KEY, true);
       return true;
     }
 
     // Step 3: If not enabled, send a request to enable it
-    const enableResponse = await apiClient.post('/users/googleFit', { googleFit: true });
-    
+    const enableResponse = await apiClient.post("/users/googleFit", {
+      googleFit: true,
+    });
+
     if (enableResponse.status === 200) {
-      console.log('Google Fit enabled successfully:', enableResponse.data);
-      
+      console.log("Google Fit enabled successfully:", enableResponse.data);
+
       // Cache the status in MMKV
       storage.set(GOOGLE_FIT_ENABLED_KEY, true);
       return true;
     } else {
-      console.error('Failed to enable Google Fit:', enableResponse.data);
+      console.error("Failed to enable Google Fit:", enableResponse.data);
       return false;
     }
   } catch (err: any) {
-    console.error('Error checking or enabling Google Fit:', err.message || err);
+    console.error("Error checking or enabling Google Fit:", err.message || err);
     return false;
   }
 };
